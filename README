@@ -13,9 +13,92 @@ Please follow below instruction to create a local server for webservices:
 4) Execute bash script "playIt.sh"
 5) And Boom your web server is deployed on localhost
 6) To check status of webservice execute "curl http://127.0.0.1:5000/status"
-7) To unit test go to TruecallerTestE directory and run "python3 test.py", all test cases should pass.
+7) To unit test go to HemTest directory and run "python3 test.py", all test cases should pass.
+
+The attributes are as follows:
+ {
+        "created_timestamp": "24-04-2019 23:04:28",
+        "due_date": "",
+        "status": "not done",
+        "task": "oak",
+        "transaction_id": "ac5e93da-e43e-4c19-a537-0a94825dd7eb"
+ }
+
+created_timestamp and transaction_id are auto generated
+NOTE:
+ - transaction_id is necessary for update operations
+ - status can only be "done" or "not done"
+ - due_date is optional but if provided it should follow "dd-mm-yyyy" format
 
 Following are the endpoints and their arguments:
 
 1)/status/
 To check the status of a web server
+
+2)/get/
+Get all Task
+
+3)/get/?status=<done/not_done/~not done~>
+Filter task w.r.t status
+
+4)/get/?due_date=<valid date in format of (dd-mm-yyyy)>
+Filter task w.r.t status
+
+5)/get/?status=<done/not_done/~not done~>
+Filter task w.r.t status
+
+5)/get/?status=<done/not_done/~not done~>
+Filter task w.r.t status
+
+6)/get/?task=~<task>~
+Filter task w.r.t task
+
+7)/get/?status=<done/not_done/~not done~>&task=~<task>~
+Filter task w.r.t status and task
+
+7)/get/?status=<done/not_done/~not done~>&task=~<task>~&due_date=<valid date in format of (dd-mm-yyyy)>
+Filter task w.r.t status, due_date and task
+
+8)/post/
+Create todo task
+
+data =  {
+        "due_date": "", (Optional)
+        "status": "<done/not done>",
+        "task": "<Task description>",
+    }
+
+8)/put/
+Update todo task
+data =  {
+        "transaction_id": "<fetch from get resource>" (compulsory)
+        "due_date": "<date>",
+        "status": "<done/not done>",
+        "task": "<Task description>",
+    }
+
+NOTE:
+ - You can update atleast one attribute and atmost all attributes except created_timestamp and transaction_id
+
+
+8)/delete/
+Deletes all todo task
+
+
+9)/delete/
+Deletes todo task by transaction
+data =  {
+        "transaction_id": "<fetch from get resource>"
+    }
+
+10)/delete/
+Deletes todo task by status
+data =  {
+        "status": "<done/not done>",
+    }
+
+11)/delete/
+Deletes todo task by due_date
+data =  {
+        "due_date": "<date>"
+    }
