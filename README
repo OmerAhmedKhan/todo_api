@@ -1,0 +1,21 @@
+Prerequisites
+1) Lunix OS
+2) Python3
+3) Curl (if executing web service endpoint from terminal)
+3) Terminal or web browser
+
+
+Please follow below instruction to create a local server for webservices:
+
+1) Open Lunix terminal
+2) Copy HemTest directory to /home/<user> (current user of the lunix) path.
+3) Go to HemTest directory
+4) Execute bash script "playIt.sh"
+5) And Boom your web server is deployed on localhost
+6) To check status of webservice execute "curl http://127.0.0.1:5000/status"
+7) To unit test go to TruecallerTestE directory and run "python3 test.py", all test cases should pass.
+
+Following are the endpoints and their arguments:
+
+1)/status/
+To check the status of a web server
