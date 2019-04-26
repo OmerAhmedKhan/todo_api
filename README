@@ -100,5 +100,9 @@ data =  {
 11)/delete/
 Deletes todo task by due_date
 data =  {
+        "due_date": "<date>",
+    }
+Deletes todo task by due_date
+data =  {
         "due_date": "<date>"
     }
